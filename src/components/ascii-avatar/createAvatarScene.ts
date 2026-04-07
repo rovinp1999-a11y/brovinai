@@ -368,22 +368,22 @@ export async function createAvatarScene() {
       tlz = 0.3;
 
     } else if (sp <= 0.18) {
-      // Phase 2: Zoom into monitor
+      // Phase 2: Zoom into monitor — close enough to fill the screen
       const t = smoothstep(0.10, 0.18, sp);
       const fromX = monitorWorldX + Math.sin(0.4) * 2.8;
       const fromZ = Math.cos(0.4) * 2.8;
       tx = lerp(fromX, monitorWorldX, t);
-      ty = lerp(1.4, monitorWorldY + 0.05, t);
-      tz = lerp(fromZ, monitorWorldZ - 0.6, t);
+      ty = lerp(1.4, monitorWorldY, t);
+      tz = lerp(fromZ, monitorWorldZ - 0.25, t); // much closer (0.25 away)
       tlx = monitorWorldX;
       tly = monitorWorldY;
       tlz = monitorWorldZ;
 
     } else if (sp <= 0.38) {
-      // Phase 3: Parked at monitor
+      // Phase 3: Parked at monitor — screen fills viewport
       tx = monitorWorldX;
-      ty = monitorWorldY + 0.05;
-      tz = monitorWorldZ - 0.6;
+      ty = monitorWorldY;
+      tz = monitorWorldZ - 0.25;
       tlx = monitorWorldX;
       tly = monitorWorldY;
       tlz = monitorWorldZ;

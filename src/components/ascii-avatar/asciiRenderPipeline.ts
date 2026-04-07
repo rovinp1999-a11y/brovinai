@@ -127,10 +127,10 @@ export function createAsciiPipeline(
       uGranularity: { value: 14.0 },
       uCharCount: { value: charCount },
       uTime: { value: 0 },
-      // Avatar colors — dimmer blue-gray tones to not blend with bright text
-      uColorA: { value: new THREE.Color(0x2a8f9e) }, // teal (top)
-      uColorB: { value: new THREE.Color(0x6650a0) }, // indigo (mid)
-      uColorC: { value: new THREE.Color(0x28805a) }, // green (bottom)
+      // Varied whites for visible shading across the avatar
+      uColorA: { value: new THREE.Color(0xd8dce0) }, // bright cool white (highlights)
+      uColorB: { value: new THREE.Color(0x8890a0) }, // darker blue-gray (shadows/mid)
+      uColorC: { value: new THREE.Color(0xc0c8c0) }, // soft warm white (base)
     },
     transparent: true,
     depthTest: false,

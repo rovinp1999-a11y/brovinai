@@ -1,4 +1,4 @@
-const DEFAULT_CHARSET = " .:;+=$&@#%WXMK";
+const DEFAULT_CHARSET = " .*_<>,./{0}#@";
 const DEFAULT_FONT_SIZE = 64;
 const DEFAULT_RESOLUTION = 1024;
 const GRID_SIZE = 16;

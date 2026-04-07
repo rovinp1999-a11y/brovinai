@@ -6,9 +6,8 @@ import { generateCharAtlas } from "./charAtlasGenerator";
 import { createAvatarScene } from "./createAvatarScene";
 import { createAsciiPipeline } from "./asciiRenderPipeline";
 
-// Characters ordered by visual density: thin → bold
-// Coding symbols + letters for a techy look
-const CHARSET = " .:;+=$&@#%WXMK";
+// Coding symbols (dragonfly.xyz style)
+const CHARSET = " .*_<>,./{0}#@";
 
 // Narrative zone ends at roughly 55% of total page scroll
 // (6.5 viewports of narrative sections out of ~12 total viewports)

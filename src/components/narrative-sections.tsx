@@ -42,96 +42,102 @@ export function ScrollSpacer({ height = "100vh" }: { height?: string }) {
   return <div style={{ height }} />;
 }
 
-// "Inside the monitor" — personal journey story
+// "Inside the monitor" — mac-style .md document, fades in from center
 export function MonitorContent() {
-  const ref = useRef<HTMLDivElement>(null);
   const progress = useScrollProgress();
 
-  // Fast appearance: fade in at 12-16%, fade out at 34-38%
   let opacity = 0;
-  if (progress > 0.12 && progress < 0.40) {
-    if (progress < 0.16) {
-      opacity = (progress - 0.12) / 0.04;
-    } else if (progress > 0.34) {
-      opacity = 1 - (progress - 0.34) / 0.06;
-    } else {
-      opacity = 1;
-    }
+  if (progress > 0.11 && progress < 0.22) {
+    if (progress < 0.16) opacity = (progress - 0.11) / 0.05;
+    else if (progress > 0.19) opacity = 1 - (progress - 0.19) / 0.03;
+    else opacity = 1;
   }
 
+  const scale = 0.92 + Math.min(1, opacity) * 0.08;
+
   return (
+    <div className="min-h-[150vh]">
     <div
-      ref={ref}
-      className="flex min-h-[150vh] items-center justify-center px-6 py-24"
-      style={{ opacity: Math.max(0, Math.min(1, opacity)) }}
+      className="pointer-events-none fixed inset-0 z-20 flex items-center justify-center px-4"
+      style={{
+        opacity: Math.max(0, Math.min(1, opacity)),
+        pointerEvents: opacity > 0 ? "auto" : "none",
+      }}
     >
-      <div className="mx-auto max-w-2xl">
-        <div className="rounded-xl border border-border/50 bg-surface/90 p-6 backdrop-blur-xl sm:p-10">
-          {/* Window chrome */}
-          <div className="mb-6 flex items-center gap-2">
-            <div className="h-3 w-3 rounded-full bg-red-500/60" />
-            <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
-            <div className="h-3 w-3 rounded-full bg-green-500/60" />
-            <span className="ml-3 font-mono text-xs text-text-muted">
+      <div className="mx-auto w-full max-w-5xl">
+        {/* Mac-style window */}
+        <div className="overflow-hidden rounded-xl border border-border/50 bg-surface/95 shadow-2xl backdrop-blur-xl">
+          {/* Title bar */}
+          <div className="flex items-center gap-2 border-b border-white/5 bg-surface-light/80 px-4 py-3">
+            <div className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+            <div className="h-3 w-3 rounded-full bg-[#febc2e]" />
+            <div className="h-3 w-3 rounded-full bg-[#28c840]" />
+            <span className="ml-4 font-mono text-xs text-text-muted/50">
               ~/my-story.md
             </span>
           </div>
 
-          {/* Personal journey — storytelling, not a resume */}
-          <div className="space-y-5 text-sm leading-relaxed sm:text-base">
-            <p className="text-foreground">
-              I started using{" "}
-              <span className="text-accent-cyan font-semibold">AI to help me work</span>{" "}
-              about two years ago. At first, it was just asking ChatGPT
-              simple questions — nothing crazy.
-            </p>
+          {/* Document content */}
+          <div className="p-8 sm:p-12">
+            <div className="space-y-5 text-sm leading-relaxed sm:text-base">
+              <p className="text-foreground">
+                I started using{" "}
+                <span className="font-semibold text-accent-cyan">
+                  AI to help me work
+                </span>{" "}
+                about two years ago. At first, it was just asking ChatGPT
+                simple questions — nothing crazy.
+              </p>
 
-            <p className="text-foreground">
-              But then something clicked. I realized AI wasn&apos;t just a tool
-              for answering questions — it was a{" "}
-              <span className="text-accent-purple font-semibold">
-                creative partner
-              </span>
-              . I could describe what I wanted to build, and together we&apos;d
-              figure out how to make it real.
-            </p>
+              <p className="text-foreground">
+                But then something clicked. I realized AI wasn&apos;t just
+                a tool for answering questions — it was a{" "}
+                <span className="font-semibold text-accent-purple">
+                  creative partner
+                </span>
+                . I could describe what I wanted to build, and together
+                we&apos;d figure out how to make it real.
+              </p>
 
-            <p className="text-foreground">
-              So I did something a little crazy — I{" "}
-              <span className="text-accent-green font-semibold">
-                vibe coded an entire mobile game
-              </span>{" "}
-              from scratch. No game dev background. No Unity experience.
-              Just me, AI, and a lot of late nights. That game became{" "}
-              <span className="text-accent-cyan">King&apos;s Gambit</span>,
-              and it&apos;s now live on the App Store and Google Play.
-            </p>
+              <p className="text-foreground">
+                So I did something a little crazy — I{" "}
+                <span className="font-semibold text-accent-green">
+                  vibe coded an entire mobile game
+                </span>{" "}
+                from scratch. No game dev background. No Unity experience.
+                Just me, AI, and a lot of late nights. That game became{" "}
+                <span className="text-accent-cyan">King&apos;s Gambit</span>,
+                and it&apos;s now live on the App Store and Google Play.
+              </p>
 
-            <p className="text-foreground">
-              That experience changed how I think about building things.
-              I went from &quot;I don&apos;t know how to code that&quot; to{" "}
-              <span className="text-accent-purple font-semibold">
-                &quot;let me figure it out with AI.&quot;
-              </span>
-            </p>
+              <p className="text-foreground">
+                That experience changed how I think about building things.
+                I went from &quot;I don&apos;t know how to code that&quot;
+                to{" "}
+                <span className="font-semibold text-accent-purple">
+                  &quot;let me figure it out with AI.&quot;
+                </span>
+              </p>
 
-            <p className="text-foreground">
-              Today I work at{" "}
-              <span className="text-accent-cyan">Animoca Brands</span> as a
-              Product Owner, shipping products in the chess and gaming space.
-              But what really gets me excited is sharing what I&apos;ve learned
-              along the way.
-            </p>
+              <p className="text-foreground">
+                Today I work at{" "}
+                <span className="text-accent-cyan">Animoca Brands</span> as
+                a Product Owner, shipping products in the chess and gaming
+                space. But what really gets me excited is sharing what
+                I&apos;ve learned along the way.
+              </p>
 
-            <p className="text-text-muted italic">
-              Because if I could build a game with zero experience,{" "}
-              <span className="text-foreground not-italic font-semibold">
-                imagine what you could build.
-              </span>
-            </p>
+              <p className="italic text-text-muted">
+                Because if I could build a game with zero experience,{" "}
+                <span className="font-semibold not-italic text-foreground">
+                  imagine what you could build.
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

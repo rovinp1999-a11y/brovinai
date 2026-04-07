@@ -18,15 +18,13 @@ export default function Home() {
     <>
       <AsciiBackground />
       <div className="relative z-10">
-        {/* === CINEMATIC NARRATIVE === */}
-
         {/* 1. Greeting */}
         <Hero />
 
-        {/* 2. Camera zooms into avatar's monitor */}
+        {/* 2. Camera zooms into monitor */}
         <ScrollSpacer height="100vh" />
 
-        {/* 3. "Inside the monitor" — about me */}
+        {/* 3. About me — styled as monitor content */}
         <MonitorContent />
 
         {/* 4. Camera pulls back, avatar walks to whiteboard */}

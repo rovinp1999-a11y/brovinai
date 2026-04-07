@@ -38,7 +38,8 @@ export function AsciiAvatar({ className }: { className?: string }) {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    if (window.matchMedia("(pointer: coarse)").matches) return;
+    const isMobile = window.matchMedia("(pointer: coarse)").matches;
+    // Don't skip mobile — run with lower quality instead
 
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -89,7 +90,7 @@ export function AsciiAvatar({ className }: { className?: string }) {
         depth: false,
         powerPreference: "high-performance",
       });
-      const dpr = Math.min(window.devicePixelRatio, 1.5);
+      const dpr = isMobile ? 1.0 : Math.min(window.devicePixelRatio, 1.5);
       renderer.setPixelRatio(dpr);
 
       const width = el.clientWidth;

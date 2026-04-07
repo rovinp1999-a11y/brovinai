@@ -107,7 +107,8 @@ export function createAsciiPipeline(
   const renderTarget = new THREE.WebGLRenderTarget(size.x, size.y, {
     minFilter: THREE.LinearFilter,
     magFilter: THREE.LinearFilter,
-    type: THREE.HalfFloatType,
+    // Use UnsignedByteType for Safari compatibility (HalfFloatType not supported)
+    type: THREE.UnsignedByteType,
   });
 
   const charAtlasTexture = new THREE.CanvasTexture(charAtlasCanvas);

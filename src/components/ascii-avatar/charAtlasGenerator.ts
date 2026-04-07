@@ -1,4 +1,6 @@
-const DEFAULT_CHARSET = " .*_<>,./{0}#@";
+// 16 chars ordered by pixel density: empty → thin → medium → dense
+// More levels = smoother tonal gradation for detailed rendering
+const DEFAULT_CHARSET = " .:-~=+*%#&$@WM";
 const DEFAULT_FONT_SIZE = 64;
 const DEFAULT_RESOLUTION = 1024;
 const GRID_SIZE = 16;

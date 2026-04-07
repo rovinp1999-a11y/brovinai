@@ -3,15 +3,15 @@
 import { motion } from "framer-motion";
 
 const items = [
+  "AI AGENTS",
   "VIBE CODING",
-  "KING'S GAMBIT",
+  "ONE-MAN COMPANY",
   "NEXT.JS",
   "TYPESCRIPT",
-  "ANICHESS",
-  "PRODUCT OWNER",
-  "CHESS.COM",
-  "MOBILE GAMES",
-  "ANIMOCA BRANDS",
+  "AUTOMATION",
+  "SHIP FAST",
+  "AI WORKFLOWS",
+  "BUILD WITH AI",
   "CREATIVE DEV",
 ];
 

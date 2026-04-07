@@ -45,11 +45,8 @@ const fragmentShader = /* glsl */ `
       return;
     }
 
-    // Map luminance to character index + random cycling
-    // Each cell gets a time-varying random offset so characters constantly switch
-    float cellRand = hash(floor(vUv / cellSize) + floor(uTime * 4.0));
-    float charIndex = floor(lum * (uCharCount - 1.0) + cellRand * (uCharCount * 0.4));
-    charIndex = mod(charIndex, uCharCount);
+    // Map luminance directly to character index — no randomization
+    float charIndex = floor(lum * (uCharCount - 1.0) + 0.5);
     charIndex = clamp(charIndex, 0.0, uCharCount - 1.0);
 
     // Atlas lookup: 16x16 grid
@@ -124,7 +121,7 @@ export function createAsciiPipeline(
       tScene: { value: renderTarget.texture },
       tCharAtlas: { value: charAtlasTexture },
       uResolution: { value: new THREE.Vector2(size.x, size.y) },
-      uGranularity: { value: 14.0 },
+      uGranularity: { value: 6.0 },
       uCharCount: { value: charCount },
       uTime: { value: 0 },
       // Varied whites for visible shading across the avatar

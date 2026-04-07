@@ -9,7 +9,9 @@ import { AsciiBackground } from "@/components/ascii-avatar/AsciiBackground";
 import {
   ScrollSpacer,
   MonitorContent,
-  TeachingOverlay,
+  ContentSupercharge,
+  ContentCloneAgents,
+  ContentAITeam,
   NarrativeCTA,
 } from "@/components/narrative-sections";
 
@@ -18,25 +20,28 @@ export default function Home() {
     <>
       <AsciiBackground />
       <div className="relative z-10">
-        {/* 1. Greeting */}
+        {/* Hero */}
         <Hero />
 
-        {/* 2. Camera zooms into monitor */}
+        {/* Camera zooms into monitor */}
         <ScrollSpacer height="100vh" />
 
-        {/* 3. About me — styled as monitor content */}
+        {/* my-story.md on screen */}
         <MonitorContent />
 
-        {/* 4. Camera pulls back, avatar walks to whiteboard */}
-        <ScrollSpacer height="100vh" />
+        {/* Content 1: Supercharge workflow */}
+        <ContentSupercharge />
 
-        {/* 5. Teaching */}
-        <TeachingOverlay />
+        {/* Content 2: One agent → multiple (clone animation) */}
+        <ContentCloneAgents />
 
-        {/* 6. CTA */}
+        {/* Content 3: AI team office (360 orbit) */}
+        <ContentAITeam />
+
+        {/* Content 4: CTA */}
         <NarrativeCTA />
 
-        {/* === CONTENT SECTIONS === */}
+        {/* Regular sections */}
         <Projects />
         <Marquee />
         <Press />

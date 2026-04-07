@@ -186,7 +186,7 @@ export function Contact() {
               ))}
             </div>
             <span className="font-mono text-xs text-border">
-              Built with Next.js &middot; Deployed on Vercel
+              Built with AI
             </span>
           </div>
         </div>

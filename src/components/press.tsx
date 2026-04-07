@@ -103,8 +103,6 @@ export function Press() {
             </span>
           </h2>
           <p className="mx-auto mb-12 max-w-2xl text-center text-lg text-text-muted">
-            From teaching kids vibe coding in Singapore to launching games at
-            world chess championships.
           </p>
         </motion.div>
       </div>

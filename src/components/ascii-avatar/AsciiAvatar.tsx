@@ -6,8 +6,8 @@ import { generateCharAtlas } from "./charAtlasGenerator";
 import { createAvatarScene } from "./createAvatarScene";
 import { createAsciiPipeline } from "./asciiRenderPipeline";
 
-// Coding symbols (dragonfly.xyz style)
-const CHARSET = " .*_<>,./{0}#@";
+// 16 chars by pixel density for high-detail rendering
+const CHARSET = " .:-~=+*%#&$@WM";
 
 // Narrative zone ends at roughly 55% of total page scroll
 // (6.5 viewports of narrative sections out of ~12 total viewports)
@@ -25,10 +25,10 @@ function getAvatarOpacity(rawProgress: number): number {
   if (sp <= 0.38) return 1.0 - (sp - 0.16) / 0.22;
   // 0.38-0.50: fade back in as camera pulls out (0.0 → 0.8)
   if (sp <= 0.50) return ((sp - 0.38) / 0.12) * 0.8;
-  // 0.50-0.82: visible during walk + teaching (0.8)
-  if (sp <= 0.82) return 0.8;
-  // 0.82-1.0: fade out for CTA and projects (0.8 → 0.0)
-  return 0.8 * (1 - (sp - 0.82) / 0.18);
+  // 0.50-0.96: visible during all content phases including desk zoom
+  if (sp <= 0.96) return 0.8;
+  // 0.96-1.0: quick fade at the very end
+  return 0.8 * (1 - (sp - 0.96) / 0.04);
 }
 
 export function AsciiAvatar({ className }: { className?: string }) {

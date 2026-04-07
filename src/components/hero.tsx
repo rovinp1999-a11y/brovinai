@@ -21,7 +21,7 @@ const itemVariants = {
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen items-end justify-center overflow-hidden pb-24 sm:pb-32">
+    <section className="relative flex min-h-screen items-end justify-center overflow-hidden pb-12 sm:pb-16">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -30,7 +30,7 @@ export function Hero() {
       >
         <motion.h1
           variants={itemVariants}
-          className="mb-4 text-5xl font-bold leading-tight tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+          className="mb-1 text-[10px] font-medium leading-tight tracking-wide sm:text-xs"
         >
           Hi, my name is{" "}
           <span className="text-foreground">Rovin</span>
@@ -50,9 +50,11 @@ export function Hero() {
           variants={itemVariants}
           className="mt-12 flex justify-center"
         >
-          <span className="font-mono text-xs tracking-widest text-text-muted/50">
-            scroll down
-          </span>
+          <svg className="h-8 w-5 animate-bounce text-foreground/30" fill="none" viewBox="0 0 24 40" stroke="currentColor" strokeWidth={2}>
+            <rect x="7" y="1" width="10" height="18" rx="5" />
+            <line x1="12" y1="6" x2="12" y2="10" />
+            <path d="M8 28l4 4 4-4" />
+          </svg>
         </motion.div>
       </motion.div>
     </section>

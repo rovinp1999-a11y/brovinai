@@ -8,8 +8,8 @@ const projects = [
   {
     title: "King's Gambit: Chess Survival",
     description:
-      "A chess-inspired survival mobile game where you play as the King and must survive waves of enemy pieces. I vibe coded this game and launched it on iOS & Android as the Product Owner. Debuted at the Chess.com Speed Chess Championship in London with 5M+ viewers.",
-    tech: ["Vibe Coded", "Mobile", "iOS", "Android", "Chess"],
+      "A chess-inspired survival mobile game I vibe coded from scratch using AI — no game dev background, no Unity. Built the entire game with AI agents handling code generation, asset creation, and testing. Now live on iOS and Android.",
+    tech: ["Vibe Coded", "AI Agents", "Mobile", "iOS", "Android"],
     link: "https://www.kingsgambit.fun/",
     image: "/images/anichess-preview.jpg",
     cta: "Play Now",
@@ -18,8 +18,8 @@ const projects = [
   {
     title: "Anichess",
     description:
-      "Chess with a Drop of Magic — a next-gen chess platform by Animoca Brands in partnership with Chess.com and Magnus Carlsen. Fuses traditional chess gameplay with spell mechanics for a skill-based, esport-style competition experience.",
-    tech: ["Web3", "Chess.com", "Animoca Brands", "Team Secret"],
+      "A next-gen chess platform that fuses traditional chess with spell mechanics. I led the product strategy and shipped features using an AI-powered workflow — from spec writing to deployment, all orchestrated through AI agents.",
+    tech: ["Product Strategy", "AI Workflow", "Web3", "Gaming"],
     link: "https://anichess.com",
     image: "/images/anichess-real.jpg",
     cta: "Visit Anichess",
@@ -41,9 +41,9 @@ function ProjectRow({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8 }}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : {}}
+      transition={{ duration: 1.0 }}
       className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12"
     >
       {/* Image */}
@@ -126,9 +126,9 @@ export function Projects() {
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 1.0 }}
           className="mb-16"
         >
           <div className="mb-4 flex items-center gap-3">

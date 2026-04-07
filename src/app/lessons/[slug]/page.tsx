@@ -84,13 +84,21 @@ export default async function LessonPage({
     return (
       <section className="flex min-h-screen items-center justify-center">
         <div className="text-center">
-          <h1 className="mb-4 font-mono text-6xl font-bold text-accent-cyan">
-            404
+          <span className="mb-6 inline-block font-mono text-sm tracking-wider text-accent-purple">
+            // coming soon
+          </span>
+          <h1 className="mb-4 text-4xl font-bold sm:text-5xl">
+            This lesson is{" "}
+            <span className="bg-gradient-to-r from-accent-cyan to-accent-purple bg-clip-text text-transparent">
+              coming soon
+            </span>
           </h1>
-          <p className="mb-8 text-text-muted">Lesson not found</p>
+          <p className="mb-8 text-lg text-text-muted">
+            I&apos;m still writing this one. Check back tomorrow.
+          </p>
           <Link
             href="/lessons"
-            className="font-mono text-sm text-accent-cyan hover:underline"
+            className="inline-flex h-10 items-center gap-2 rounded-lg bg-accent-cyan/10 px-6 font-mono text-sm text-accent-cyan transition-all hover:bg-accent-cyan hover:text-background"
           >
             ← Back to lessons
           </Link>

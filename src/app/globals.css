@@ -1,26 +1,236 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --foreground: #e0e0e0;
+  --accent-cyan: #00f0ff;
+  --accent-purple: #8b5cf6;
+  --accent-green: #00ff88;
+  --surface: #0d0d0d;
+  --surface-light: #1a1a2e;
+  --border: #1e1e3a;
+  --text-muted: #6b7280;
+  --animation-default: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-green: var(--accent-green);
+  --color-surface: var(--surface);
+  --color-surface-light: var(--surface-light);
+  --color-border: var(--border);
+  --color-text-muted: var(--text-muted);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overscroll-behavior: contain;
+}
+
+/* Fluid typography — inspired by landonorris.com clamp() approach */
+h1 { font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); }
+h2 { font-size: clamp(2rem, 3vw + 0.5rem, 3.5rem); }
+h3 { font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem); }
+
+/* Hidden scrollbar — cross-browser (landonorris.com style) */
+::-webkit-scrollbar {
+  display: none;
+}
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 240, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Glow utilities */
+.glow-cyan {
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.5), 0 0 40px rgba(0, 240, 255, 0.2);
+}
+.glow-purple {
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.2);
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 240, 255, 0.15);
+  box-shadow: 0 8px 40px rgba(0, 240, 255, 0.06);
+}
+
+/* Animated gradient text shimmer */
+.shimmer-text {
+  background-size: 200% auto;
+  animation: shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+}
+
+/* Scanline overlay for techy feel */
+.scanlines::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(0, 0, 0, 0.02) 1px,
+    rgba(0, 0, 0, 0.02) 2px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Noise texture overlay */
+.noise-overlay::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Highlighted glass card variant */
+.glass-card-highlight {
+  background: rgba(0, 240, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 240, 255, 0.06);
+}
+
+/* Horizontal scroll fade masks */
+.horizontal-scroll-mask {
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+/* Tabular nums for counters */
+.counter-number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Glitch text effect */
+.glitch {
+  position: relative;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.glitch::before {
+  animation: glitch-1 2s infinite linear alternate-reverse;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  color: var(--accent-cyan);
+  opacity: 0.6;
+}
+.glitch::after {
+  animation: glitch-2 3s infinite linear alternate-reverse;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  color: var(--accent-purple);
+  opacity: 0.6;
+}
+@keyframes glitch-1 {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, 2px); }
+  80% { transform: translate(1px, -2px); }
+  100% { transform: translate(0); }
+}
+@keyframes glitch-2 {
+  0% { transform: translate(0); }
+  25% { transform: translate(2px, 1px); }
+  50% { transform: translate(-2px, -1px); }
+  75% { transform: translate(1px, 2px); }
+  100% { transform: translate(0); }
+}
+
+/* Neon border pulse */
+.neon-border {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.1); }
+  50% { box-shadow: 0 0 10px rgba(0, 240, 255, 0.4), 0 0 40px rgba(0, 240, 255, 0.2); }
+}
+
+/* Smooth clip-path transitions */
+[data-clip-reveal] {
+  transition: clip-path var(--animation-default);
+}
+
+/* Disable pointer events during animations (landonorris.com technique) */
+[data-animating="true"] {
+  pointer-events: none;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html.lenis,
+  html.lenis body {
+    scroll-behavior: auto;
+  }
 }
